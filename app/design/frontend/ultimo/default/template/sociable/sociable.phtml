@@ -1,0 +1,85 @@
+<?php
+/**
+* aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE-COMMUNITY.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Sociable
+ * @version    1.3
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE-COMMUNITY.txt
+ */
+?>
+<?php if (!Mage::registry('aw_social_script')): ?>
+    <?php Mage::register('aw_social_script', TRUE); ?>
+    <script type="text/javascript">
+                                                                                        
+        var aw_sociable_id=0;  
+        function awSociableSaveClick(){
+            var U = "<?php echo $this->getAjaxUrl(); ?>"
+                + 'service_id/'+encodeURIComponent(aw_sociable_id)
+                +'/<?php echo $this->getAjaxParams() ?>';
+            new Ajax.Request(U, {method: 'get'});
+        }
+        document.observe('dom:loaded', function(){
+            $$('ul.aw-sociable_services-list li a[rel*="external"]').each(function(item){
+                item.writeAttribute('target','_blank')
+            });
+            $$("ul.aw-sociable_services-list li").each(function(item){
+                item.observe('mouseover', function() {
+                    var srv_id=item.getAttribute('class').match("srv_(.*?)_id");
+                    if(srv_id!=null){  aw_sociable_id=srv_id[1]; }
+                });
+               // item.observe('mouseout', function() {aw_sociable_id='';});
+            });
+        });  
+    </script>
+<?php endif; ?>
+
+<?php if ($this->getIsShow()): ?>
+    <?php $services = $this->getServicesList(); ?>
+    
+    <?php if (!empty($services)): ?>
+        <div class="aw-sociable_services  <?php echo $this->getDivClass(); ?>">
+            <ul class="aw-sociable_services-list">
+                <?php foreach ($services as $service): ?>
+                    <li class="aw-sociable_services_link-<?php echo $service['class'] ?> srv_<?php echo $service['id']; ?>_id">
+                        <?php if ($service['service_script']): ?>
+                           <?php echo $service['service_script']; ?>
+                        <?php else: ?>
+                            <a href="<?php echo $this->getLinkToSociable($service['id']); ?>" class="aw-sociable_services_link" rel="<?php echo ($service['new_window']) ? 'external ' : '' ?>nofollow" title="<?php echo $service['title'] ?>">
+                                <img src="<?php echo $service['icon'] ?>" class="aw-sociable_services_thumbnail" alt="<?php echo $service['title'] ?>" />
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            <?php $current_product = Mage::registry('current_product');?>     
+            <?php $blockProduct = new Mage_Catalog_Block_Product_View();?>     
+            <?php if ($blockProduct->canEmailToFriend() && $current_product->getId()): ?>
+                
+            <li class="aw-sociable_services_link-pinterest srv_199_id">
+                       <a title="Email To Friend" target="_blank" href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($current_product) ?>"><img src="<?php echo $this->getSkinUrl('images/email.png')?>"/></a>
+                  
+            </li>
+                    
+                    <?php endif; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

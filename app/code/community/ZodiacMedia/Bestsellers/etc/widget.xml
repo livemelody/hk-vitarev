@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please contact us via our website at 
+ * http://www.zodiacmedia.co.uk/contact-us so we can send you a copy immediately.
+ *
+ * @category   ZodiacMedia
+ * @package    ZodiacMedia_Bestsellers
+ * @copyright  Copyright (c) 2013 Zodiac Media Ltd (http://www.zodiacmedia.co.uk)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<widgets>
+	<bestsellers type="bestsellers/widget_bestsellers" translate="name description">
+        <name>Zodiac Media Bestsellers</name>
+        <description>A list of your store's bestselling products ordered by popularity.</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>12</value>
+                <label>Number of products to display</label>
+                <type>text</type>
+            </products_count>
+            <thumbnail_size translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>135</value>
+                <label>Maximum dimension of product thumbnail images (pixels)</label>
+                <type>text</type>
+            </thumbnail_size>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>zodiacmedia/bestsellers/widget/bestsellers/content/bestsellers_grid.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>zodiacmedia/bestsellers/widget/bestsellers/content/bestsellers_grid.phtml</value>
+                        <label>Bestsellers grid template</label>
+                    </default>
+                    <list translate="label">
+                        <value>zodiacmedia/bestsellers/widget/bestsellers/content/bestsellers_list.phtml</value>
+                        <label>Bestsellers list template</label>
+                    </list>
+                </values>
+            </template>
+            <cache_lifetime translate="label description">
+                <label>Cache lifetime (seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, clear the 'Blocks HTML Output' cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+            </cache_lifetime>
+        </parameters>
+    </bestsellers>
+</widgets>

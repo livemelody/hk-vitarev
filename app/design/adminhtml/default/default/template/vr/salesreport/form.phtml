@@ -1,0 +1,18 @@
+<form action="<?php echo $this->getUrl('adminhtml/salesreport/index') ?>" method="get">
+<h3 class="icon-head head-adminhtml-salesreport">Create New Report</h3>
+<label for="month"><?php echo $this->__('Month'); ?></label>
+    <input type="hidden" name="is_create" value="1">
+    <select name="month" id="month">
+    <?php for ($i=1;$i<=12;$i++): ?>
+        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+    <?php endfor; ?>>
+</select>
+<label for="year"><?php echo $this->__('Year'); ?></label>
+<select name="year">
+    <option value="all">All</option>
+    <?php for ($i=(int)Zend_Date::now()->toString("yyyy");$i>=2013;$i--): ?>
+    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+    <?php endfor; ?>
+</select>
+    <button title="Add New" type="submit" class="scalable add"><span><span><span>Create Report</span></span></span></button>
+</form>

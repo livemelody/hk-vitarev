@@ -1,0 +1,28 @@
+/* Font Adjustments */
+
+body {
+	font-size: 14px;
+}
+
+h1 {
+	font-size: 1.66em;
+	font-weight: bold;
+}
+
+/* OPC Style Overrides */
+
+.opc-wrapper-opc .discount-block .button span {
+	background: none !important;
+}
+
+.opc-wrapper-opc .discount-block .button span span {
+	background: none !important;
+}
+
+.opc-wrapper-opc .btn-checkout span {
+	background: none !important;
+}
+
+.opc-wrapper-opc .btn-checkout span span {
+	background: none !important;
+}

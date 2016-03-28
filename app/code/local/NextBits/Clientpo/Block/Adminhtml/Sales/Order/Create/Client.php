@@ -1,0 +1,4 @@
+<?php
+class NextBits_Clientpo_Block_Adminhtml_Sales_Order_Create_Client extends Mage_Adminhtml_Block_Sales_Order_Create_Abstract
+{ 
+}

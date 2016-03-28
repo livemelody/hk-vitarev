@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_salesreport_index>
+        <reference name="content">
+            <block type="vr_salesreport/adminhtml_salesreport" name="vr_salesreport_file">
+                <block type="vr_salesreport/adminhtml_salesreport_form" name="creating_report" as="report_form"/>
+            </block>
+        </reference>
+    </adminhtml_salesreport_index>
+</layout>

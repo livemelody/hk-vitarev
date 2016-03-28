@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<NextBits_Clientpo>
+			<active>true</active>
+			<codePool>local</codePool>
+			<version>0.1.0</version>
+		</NextBits_Clientpo>
+	</modules>
+</config>

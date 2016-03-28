@@ -1,0 +1,14 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3><?php echo $this->getHeaderText() ?></h3></td>
+            <td class="form-buttons">
+                <?php echo $this->getButtonsHtml() ?>
+            </td>
+        </tr>
+    </table>
+</div>
+<?php echo $this->getChildHtml("report_form");?>
+<div>
+    <?php echo $this->getGridHtml() ?>
+</div>
